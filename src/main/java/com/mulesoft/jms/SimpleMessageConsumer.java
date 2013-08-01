@@ -14,7 +14,8 @@ public class SimpleMessageConsumer implements MessageListener {
 
     public void onMessage(Message message) {
         try {
-            LOG.info("Received message: {}", ((TextMessage)message).getText());
+            String strMess = ((TextMessage)message).getText();
+            LOG.info("Processed an order message.");
             //System.out.println("Processed an order.");
         } catch (JMSException e) {
             LOG.error(e.getMessage(), e);
