@@ -5,9 +5,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
@@ -21,21 +18,21 @@ import org.slf4j.LoggerFactory;
 @SOAPBinding(style = SOAPBinding.Style.RPC, use = SOAPBinding.Use.LITERAL)
 public class UserOperationService {
     private static final Logger LOG = LoggerFactory.getLogger(UserOperationService.class);
-    private static final String HELLO = "Hello";
+    private static final String HELLO = "Your order is being processed,";
 
     @WebMethod(operationName = "sayHello")
     public String sayHelloToTheUser(@WebParam(name = "name") String userName) {
         ApplicationContext context
-                = new ClassPathXmlApplicationContext("./MessageContext.xml");
+                = new ClassPathXmlApplicationContext("applicationContextJMSProducer.xml");
         SimpleMessageProducer producer = (SimpleMessageProducer) context.getBean("messageProducer");
 
         try {
-            producer.sendMessages(userName);
+            producer.sendMessage(userName);
         } catch (JMSException e) {
-            System.out.println("Could not send a message.");
+            LOG.error("Could not send a message.");
         }
 
-        LOG.info("Returning a HELLO message.");
+        LOG.info("Returning a confirmation message.");
 
         return HELLO + " " + userName;
     }

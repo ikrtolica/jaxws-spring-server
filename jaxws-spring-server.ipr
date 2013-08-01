@@ -24,7 +24,7 @@
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
-    <entry_points />
+    <entry_points version="2.0" />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="PRINT_LINE_NUMBERS" value="false" />
@@ -193,9 +193,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jaxws-spring-server.iml" filepath="$PROJECT_DIR$/jaxws-spring-server.iml" />
     </modules>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/ActiveMQ.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" />
   <component name="VcsDirectoryMappings">

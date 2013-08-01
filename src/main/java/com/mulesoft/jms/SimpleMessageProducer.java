@@ -49,11 +49,21 @@ public class SimpleMessageProducer {
         }
     }
 
+    public void sendMessage(final String userName) throws JMSException {
+        jmsTemplate.send(new MessageCreator() {
+            public Message createMessage(Session session) throws JMSException {
+                TextMessage message = session.createTextMessage(userName);
+                LOG.info("Sending message.");
+                return message;
+            }
+        });
+    }
+
     public void jmsSendMessages() throws JMSException {
         final StringBuilder buffer = new StringBuilder();
 
         for (int i = 0; i < numberOfMessages; ++i) {
-            buffer.append("Message '").append(i).append("' sent at: ").append(new Date());
+            buffer.append("Order '").append(i).append("' sent at: ").append(new Date());
 
             final int count = i;
             final String payload = buffer.toString();

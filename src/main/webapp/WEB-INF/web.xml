@@ -10,20 +10,16 @@
         <param-value>classpath*:applicationContext*.xml</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>org.apache.activemq.brokerURL</param-name>
-        <param-value>vm://localhost</param-value>
-        <description>The URL of the Message Broker to connect to</description>
-    </context-param>
-
-    <context-param>
-        <param-name>org.apache.activemq.embeddedBroker</param-name>
-        <param-value>true</param-value>
-        <description>Whether we should include an embedded broker or not</description>
-    </context-param>
-
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/log4j.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
     <servlet>
